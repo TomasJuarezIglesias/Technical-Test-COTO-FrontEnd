@@ -1,4 +1,4 @@
-# Coto Frontend
+# Technical-Test-COTO-FrontEnd
 
 Este proyecto es una **aplicación frontend desarrollada con Angular versión 19.0.6** como parte de un **ejercicio técnico**. Su objetivo es consumir y visualizar información proveniente de una **API desarrollada en .NET 8**, también realizada como parte del mismo ejercicio técnico.
 
