@@ -1,6 +1,6 @@
 export interface SalonDto {
   id: number;
-  Nombre: string;
-  Ubicacion: string;
-  Capacidad: number;
+  nombre: string;
+  ubicacion: string;
+  capacidad: number;
 }

@@ -1,0 +1,58 @@
+.container {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.field-wrapper {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  min-width: 240px;
+}
+
+.button-wrapper {
+  display: flex;
+  align-items: center;
+  height: 56px;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  padding: 32px;
+}
+
+.reservas-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mat-header-cell,
+.mat-cell {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.mat-header-cell {
+  font-weight: 600;
+  background: #f0f0f0;
+}
+
+.no-data {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  padding: 16px;
+}
