@@ -34,6 +34,9 @@ export const environment = {
 
 Para producción, también deberías configurar `src/environments/environment.prod.ts` con los valores correspondientes.
 
+> **Importante**:  
+> Si vas a consumir la API desde el contenedor de Docker, **asegurate de usar `http`, no `https`**, en la URL de `apiBaseUrl`.
+
 ---
 
 ## Levantar el servidor de desarrollo
