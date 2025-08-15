@@ -151,6 +151,7 @@ export class ListadoComponent {
           };
 
           dialogRef.close();
+          this.snackbarService.success('Reserva registrada correctamente');
           this.loadReservas(this.datePicked());
         },
         error: (err) => {
