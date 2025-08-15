@@ -21,6 +21,7 @@ import { firstValueFrom, forkJoin, Subscription } from 'rxjs';
 import { TableComponent } from '../../../../core/components/table/table.component';
 import { FormComponent } from '../../../../core/components/form/form.component';
 import { OptionConfig } from '../../../../core/interfaces/option-config.interface';
+import { SnackbarService } from '../../../../core/services/snackbar.service';
 
 @Component({
   selector: 'app-listado',
@@ -48,6 +49,8 @@ export class ListadoComponent {
   private reservaService = inject(ReservaService);
   private salonService = inject(SalonService);
   private clienteService = inject(ClienteService);
+
+  private snackbarService = inject(SnackbarService);
 
   public readonly columns = [
     { key: 'fecha', label: 'Fecha', value: (r: ReservaDto) => r.fecha ? new Date(r.fecha).toLocaleDateString('es-AR') : '' },
@@ -79,8 +82,8 @@ export class ListadoComponent {
         this.loading.set(false);
       },
       error: (err) => {
-        console.error(err);
         this.loading.set(false);
+        this.snackbarService.error(err);
       }
     });
 
@@ -143,7 +146,7 @@ export class ListadoComponent {
       const sub = this.reservaService.post(dto).subscribe({
         next: (resp) => {
           if (!resp.success) {
-            // Mensaje de error
+            this.snackbarService.error(resp.message ?? 'Ha ocurrido un error');
             return;
           };
 
@@ -151,8 +154,7 @@ export class ListadoComponent {
           this.loadReservas(this.datePicked());
         },
         error: (err) => {
-          console.log(err.error.message);
-          console.error('Error al crear reserva', err);
+          this.snackbarService.error(err.error.message);
         }
       });
 
