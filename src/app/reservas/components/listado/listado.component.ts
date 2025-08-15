@@ -10,6 +10,8 @@ import { ReservasService } from '../../services/reservas.service';
 import { ReservaDto } from '../../interfaces/reserva-dto';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatNativeDateModule } from '@angular/material/core';
+import { TableComponent } from '../../../shared/components/table/table.component';
 @Component({
   selector: 'app-listado',
   templateUrl: './listado.component.html',
@@ -20,17 +22,24 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatTableModule,
+    MatNativeDateModule,
     MatProgressSpinnerModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    TableComponent
   ],
 })
 export class ListadoComponent {
 
   private reservasService = inject(ReservasService);
 
-  public readonly displayedColumns = ['fecha', 'horaInicio', 'horaFin', 'cliente', 'salon'];
+  public readonly columns = [
+    { key: 'fecha', label: 'Fecha', value: (r: ReservaDto) => r.fecha ? new Date(r.fecha).toLocaleDateString('es-AR') : '' },
+    { key: 'horaInicio', label: 'Hora Inicio', value: (r: ReservaDto) => r.horaInicio },
+    { key: 'horaFin', label: 'Hora Fin', value: (r: ReservaDto) => r.horaFin },
+    { key: 'cliente', label: 'Cliente', value: (r: ReservaDto) => r.cliente?.nombre },
+    { key: 'salon', label: 'Salón', value: (r: ReservaDto) => r.salon?.nombre }
+  ];
 
   public datePicked = signal<Date>(new Date());
   public loading = signal<boolean>(true);
