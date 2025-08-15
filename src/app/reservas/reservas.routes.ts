@@ -5,7 +5,7 @@ export const reservasRoutes: Routes = [
   {
     path: '',
     component: ListadoComponent
-  },
+  }
 ];
 
 export default reservasRoutes;

@@ -7,7 +7,7 @@ import { MatTableModule } from '@angular/material/table';
   imports: [
     MatTableModule
   ],
-  styleUrl: './table.component.css',
+  styleUrl: './table.component.scss',
   templateUrl: './table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

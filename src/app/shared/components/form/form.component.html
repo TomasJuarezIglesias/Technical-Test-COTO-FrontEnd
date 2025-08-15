@@ -1,0 +1,52 @@
+<div class="form-container">
+  <h2 class="form-title">{{ title }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+    <ng-container *ngFor="let field of fields">
+      <mat-form-field appearance="outline" class="field">
+
+        <mat-label>{{ field.label }}</mat-label>
+
+        <!-- TEXT / NUMBER / TIME -->
+        @if(field.type === 'text' || field.type === 'number' || field.type === 'time') {
+          <input matInput [type]="field.type" [formControlName]="field.name"/>
+        }
+
+        <!-- DATE -->
+        @if (field.type === 'date') {
+          <input matInput [matDatepicker]="pickerRefs[field.name]" [formControlName]="field.name" />
+        }
+
+        @if (field.type === 'date') {
+          <mat-datepicker-toggle matSuffix [for]="pickerRefs[field.name]"></mat-datepicker-toggle>
+        }
+
+        @if (field.type === 'date') {
+          <ng-container>
+            <mat-datepicker #dp></mat-datepicker>
+            <ng-template #register let-name="name">
+              {{ registerPicker(name, dp) }}
+            </ng-template>
+            <ng-container *ngTemplateOutlet="register; context: { name: field.name }"></ng-container>
+          </ng-container>
+        }
+
+        <!-- SELECT -->
+        @if(field.type === 'select') {
+          <mat-select [formControlName]="field.name">
+            @for (opt of field.options; track $index) {
+              <mat-option [value]="opt.value">{{ opt.label }}</mat-option>
+            }
+          </mat-select>
+        }
+
+      </mat-form-field>
+    </ng-container>
+
+    <div class="actions">
+      <button mat-flat-button color="primary" type="submit" [disabled]="form!.invalid || loading">
+        {{ loading ? 'Guardando...' : 'Guardar' }}
+      </button>
+    </div>
+  </form>
+</div>
