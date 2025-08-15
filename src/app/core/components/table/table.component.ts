@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { TableColumn } from '../../interface/table-column.interface';
 import { MatTableModule } from '@angular/material/table';
+import { TableColumn } from '../../interfaces/table-column.interface';
 
 @Component({
   selector: 'app-table',

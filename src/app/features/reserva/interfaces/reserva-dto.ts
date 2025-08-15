@@ -1,5 +1,5 @@
-import { ClienteDto } from "./cliente-dto";
-import { SalonDto } from "./salon-dto";
+import { ClienteDto } from "../../cliente/interfaces/cliente-dto";
+import { SalonDto } from "../../salon/interfaces/salon-dto";
 
 export interface ReservaDto {
   id: number;

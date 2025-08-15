@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./reservas/reservas.routes')
+    loadChildren: () => import('./features/reserva/reservas.routes')
   },
   {
     path: '**',
